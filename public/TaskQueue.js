@@ -16,9 +16,9 @@ export class TaskQueue {
     }
 
     async execute() {
+        queueLength.innerHTML = this.queue.length;
         if (this.queue.length > 0) {
             const task = this.queue.shift();
-            queueLength.innerHTML = this.queue.length;
             await task();
             this.execute();
         } else {
