@@ -11,18 +11,29 @@
             font-size: 20px;
         }
         main {
-            max-width: 400px;
+            max-width: 500px;
             padding: 10px;
             margin: 0 auto;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: initial;
+            color: rebeccapurple;
+        }
+        .label {
+            color: rebeccapurple;
         }
     </style>
 </head>
 <body>
     <main>
-        <p>Input multiple numbers in a row. This will log them in an async queue.</p>
-        <p>Inputs: <span id="inputs"></span></p>
-        <p>Queue length: <span id="queueLength">0</span></p>
-        <p>Logs:</p>
+        <h1>Demonstration of TaskQueue</h1>
+        <p>Input multiple numbers in a row with your keyboard. This will log them in an async queue.</p>
+        <p><span class="label">Inputs:</span> <span id="inputs"></span></p>
+        <p><span class="label">Queue length:</span> <span id="queueLength">0</span></p>
+        <p>
+            <span class="label">Logs:</span>
+        </p>
         <div id="output"></div>
     </main>
     
