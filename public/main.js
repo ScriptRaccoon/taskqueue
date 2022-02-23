@@ -13,8 +13,24 @@ document.addEventListener("keydown", (e) => {
     if (numbers.includes(key)) {
         inputs.innerHTML += key;
         myQueue.add(async () => {
-            output.innerHTML += `<p>${key}</p>`;
-            await sleep(1000);
+            await pressKey(key);
         });
     }
 });
+
+async function pressKey(key) {
+    output.innerHTML += `<p>${key}</p>`;
+    await sleep(1000);
+}
+
+const buttons = document.querySelectorAll("#buttons > button");
+
+for (const button of buttons) {
+    button.addEventListener("click", (e) => {
+        const key = e.target.innerText;
+        inputs.innerHTML += key;
+        myQueue.add(async () => {
+            await pressKey(key);
+        });
+    });
+}
