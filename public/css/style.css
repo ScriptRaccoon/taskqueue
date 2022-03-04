@@ -12,27 +12,3 @@ h1 {
     font-weight: initial;
     color: rebeccapurple;
 }
-.label {
-    color: rebeccapurple;
-}
-button {
-    font-family: inherit;
-
-    outline: none;
-
-    font-size: inherit;
-    margin: 2px;
-    padding: 3px 6px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-button.inline {
-    border: none;
-    background: none;
-    margin: 0;
-    padding: 0;
-    text-decoration: underline;
-}
-#output p {
-    margin: 0;
-}

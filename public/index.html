@@ -10,18 +10,15 @@
 <body>
     <main>
         <h1>Demonstration of TaskQueue</h1>
-        <div id="buttons" style="display: none">
-            <button>0</button><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button>
-        </div>
-        <p>Input multiple numbers in a row with your keyboard
-            (or <button class="inline" onclick="document.getElementById('buttons').style.display='block';">click here</button> if you are on mobile). This will log them in an async queue.</p>
-  
-        <p><span class="label">Inputs:</span> <span id="inputs"></span></p>
-        <p><span class="label">Queue length:</span> <span id="queueLength">0</span></p>
-        <p>
-            <span class="label">Logs:</span>
-        </p>
-        <div id="output"></div>
+        
+        <label for="numberInput">Choose a number</label>
+        <input type="number" id="numberInput" min="1" max="9" value="1" >
+        <button id="addBtn">Add number</button>
+        <button id="undoBtn">Undo</button>
+        <p>Inputs:</p>
+        <div id="inputs"></div>
+        <p>Output:</p>
+        <div id="output">0</div>        
     </main>
     
     

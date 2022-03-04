@@ -1,28 +1,48 @@
-const queueLength = document.getElementById("queueLength");
-
 export class TaskQueue {
-    constructor() {
+    constructor(fun, taskInversion) {
         this.queue = [];
         this.executing = false;
+        this.fun = fun;
+        this.delay = 100;
+        this.history = [];
+        this.taskInversion = taskInversion;
     }
 
-    add(task) {
+    clearHistory() {
+        this.history = [];
+    }
+
+    add(task, save = true) {
         this.queue.push(task);
-        queueLength.innerHTML = this.queue.length;
+        task.save = save;
         if (!this.executing) {
             this.executing = true;
             this.execute();
         }
     }
 
+    undo() {
+        if (this.executing || this.history.length == 0) return;
+        const task = this.history.pop();
+        const invertedTask = this.taskInversion(task);
+        this.add(invertedTask, false);
+    }
+
     async execute() {
-        queueLength.innerHTML = this.queue.length;
-        if (this.queue.length > 0) {
+        if (this.queue.length > 0 && this.executing) {
             const task = this.queue.shift();
-            await task();
-            this.execute();
+            if (task.save) this.history.push(task);
+            await this.fun(task);
+            setTimeout(() => {
+                this.execute();
+            }, this.delay);
         } else {
             this.executing = false;
         }
+    }
+
+    stop() {
+        this.executing = false;
+        this.queue = [];
     }
 }
